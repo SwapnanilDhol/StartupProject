@@ -7,16 +7,14 @@
 //
 
 import UIKit
-
+import MKMagneticProgress
 
 class DocumentsUploadViewController: UIViewController{
     
     
-    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var progressBarView: UIView!
-    
     @IBOutlet weak var uploadStatusLabel: UILabel!
+    @IBOutlet weak var magProgress:MKMagneticProgress!
     
     let collectionItems = ["✅ Medical Bills", "✅ Treatment Plan", "Prescription", "Documents by Doctor", "Pictures"]
 
@@ -32,11 +30,24 @@ class DocumentsUploadViewController: UIViewController{
         self.navigationItem.title = "Fast Settlement Tracker"
         self.navigationController?.navigationBar.backgroundColor = .purple
         
+        
+        magProgress.progressShapeColor = UIColor.red
+        magProgress.backgroundShapeColor = UIColor.lightGray
+        magProgress.percentColor = UIColor.black
+      //  magProgress.
+      //  magProgress.lineWidth = 30
+        magProgress.orientation = .top
+        magProgress.lineCap = .round
+        magProgress.percentLabelFormat = "%.2f%%"
+        
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         uploadStatusLabel.text = " Please Provide Injury Details "
         uploadStatusLabel.layer.masksToBounds = true
         uploadStatusLabel.layer.cornerRadius = 10
+        
+        
         
 
     }
@@ -44,7 +55,7 @@ class DocumentsUploadViewController: UIViewController{
 
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        magProgress.setProgress(progress: 0.5)
     }
 
 

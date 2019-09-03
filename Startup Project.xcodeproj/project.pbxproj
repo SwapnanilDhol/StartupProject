@@ -32,7 +32,6 @@
 		44DBFD59231D881D007EC82E /* Startup Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Startup Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DBFD5E231D881D007EC82E /* DocumentsUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsUploadViewController.swift; sourceTree = "<group>"; };
 		44DBFD66231D8821007EC82E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		44DBFD68231D8821007EC82E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44DBFD6E231E68F0007EC82E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44DBFD70231E7932007EC82E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		44DBFD74231EAFEF007EC82E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -74,19 +73,18 @@
 		44DBFD5B231D881D007EC82E /* Startup Project */ = {
 			isa = PBXGroup;
 			children = (
+				440D0270231EC95100C6ECA4 /* AppDelegate.swift */,
 				440D0276231EC95200C6ECA4 /* DocumentsUploadViewController.swift */,
-				440D0271231EC95100C6ECA4 /* Info.plist */,
 				440D0277231EC95200C6ECA4 /* Main.storyboard */,
 				440D0274231EC95200C6ECA4 /* SettingsTableViewController.swift */,
 				440D0273231EC95200C6ECA4 /* SettingsViewController.swift */,
+				440D0271231EC95100C6ECA4 /* Info.plist */,
 				448AE20C231ECA3A0020F3DA /* LaunchScreen.storyboard */,
 				440D0272231EC95100C6ECA4 /* SignInViewController.swift */,
 				44DBFD5E231D881D007EC82E /* DocumentsUploadViewController.swift */,
 				44DBFD74231EAFEF007EC82E /* SettingsTableViewController.swift */,
-				440D0270231EC95100C6ECA4 /* AppDelegate.swift */,
 				44DBFD6E231E68F0007EC82E /* Assets.xcassets */,
 				44DBFD65231D8821007EC82E /* LaunchScreen.storyboard */,
-				44DBFD68231D8821007EC82E /* Info.plist */,
 				44DBFD70231E7932007EC82E /* SettingsViewController.swift */,
 			);
 			path = "Startup Project";
@@ -120,6 +118,7 @@
 				44DBFD55231D881D007EC82E /* Sources */,
 				44DBFD56231D881D007EC82E /* Frameworks */,
 				44DBFD57231D881D007EC82E /* Resources */,
+				64BE7C879443B1C10DB79F64 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,6 +175,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		64BE7C879443B1C10DB79F64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Startup Project/Pods-Startup Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Startup Project/Pods-Startup Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Startup Project/Pods-Startup Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		936316C7CBD198052498A4E1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
