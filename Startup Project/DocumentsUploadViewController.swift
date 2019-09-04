@@ -8,6 +8,7 @@
 
 import UIKit
 import MKMagneticProgress
+import JJFloatingActionButton
 
 class DocumentsUploadViewController: UIViewController{
     
@@ -15,6 +16,8 @@ class DocumentsUploadViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var uploadStatusLabel: UILabel!
     @IBOutlet weak var magProgress:MKMagneticProgress!
+    let actionButton = JJFloatingActionButton()
+    
     
     let collectionItems = ["✅ Medical Bills", "✅ Treatment Plan", "Prescription", "Documents by Doctor", "Pictures"]
 
@@ -34,8 +37,7 @@ class DocumentsUploadViewController: UIViewController{
         magProgress.progressShapeColor = UIColor.red
         magProgress.backgroundShapeColor = UIColor.lightGray
         magProgress.percentColor = UIColor.black
-      //  magProgress.
-      //  magProgress.lineWidth = 30
+
         magProgress.orientation = .top
         magProgress.lineCap = .round
         magProgress.percentLabelFormat = "%.2f%%"
@@ -47,9 +49,25 @@ class DocumentsUploadViewController: UIViewController{
         uploadStatusLabel.layer.masksToBounds = true
         uploadStatusLabel.layer.cornerRadius = 10
         
-        
+        configFloatingActionButton()
         
 
+    }
+    
+    func configFloatingActionButton()
+    {
+        
+        actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
+            self.performSegue(withIdentifier: "chatBotSegue", sender: self)
+        }
+ 
+        
+        view.addSubview(actionButton)
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        
+        
     }
     
 
