@@ -54,16 +54,23 @@ class DocumentsUploadViewController: UIViewController{
 
     }
     
+    
+    
     func configFloatingActionButton()
     {
         
         actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
-            self.performSegue(withIdentifier: "chatBotSegue", sender: self)
+           // self.performSegue(withIdentifier: "chatBotSegue", sender: self)
+            
+            let modelVC = self.storyboard?.instantiateViewController(withIdentifier: "ChatBot") as! ChatViewController
+            let navBarOnModal: UINavigationController = UINavigationController(rootViewController: modelVC)
+            self.present(navBarOnModal, animated: true, completion: nil)
         }
  
         
         view.addSubview(actionButton)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
+       actionButton.buttonColor = UIColor(red:0.43, green:0.23, blue:0.76, alpha:1.0)
+         actionButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
         
@@ -71,13 +78,10 @@ class DocumentsUploadViewController: UIViewController{
     }
     
 
-    
-    override func viewDidAppear(_ animated: Bool) {
-        magProgress.setProgress(progress: 0.5)
     }
 
 
-}
+
 
 extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
@@ -98,14 +102,24 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
         
         
     }
+    
+    
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Upload Documents", message: "Please upload documents", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Document", style: .default, handler: { (_) in
+            //USER UPLOADED DOCUMENT
+        }))
+        alert.addAction(UIAlertAction(title: "Image", style: .default, handler: { (_) in
+            //USER UPLOADED IMAGE
+        }))
         
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
         switch indexPath.row {
         case 0:
-            print("Medical Bills")
-        //TODO: MEDICAL BILLS
+            break
         case 1:
             print("Treatment Plan")
         //TODO: Treatment Plan
