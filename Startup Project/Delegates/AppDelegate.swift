@@ -28,6 +28,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let apiai = ApiAI.shared()
         apiai?.configuration = configuration
         
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        print(UserDefaults.standard.bool(forKey: "isLoggedIn"))
+        
+        var initViewController : UIViewController
+        
+        if (UserDefaults.standard.bool(forKey: "isLoggedIn")) {
+            
+            initViewController = storyboard.instantiateViewController(withIdentifier: "MainTabController")
+
+        }
+        else
+        {
+            initViewController = storyboard.instantiateViewController(withIdentifier: "SignInView")
+            
+            
+        }
+        window?.makeKeyAndVisible()
+        window?.rootViewController = initViewController
+        
+        return true
+        
+        
+        
         return true
     }
 

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Forgot Password.png",
+      "filename" : "First Name.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Forgot Password@2x.png",
+      "filename" : "First Name@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Forgot Password@3x.png",
+      "filename" : "First Name@3x.png",
       "scale" : "3x"
     }
   ],
