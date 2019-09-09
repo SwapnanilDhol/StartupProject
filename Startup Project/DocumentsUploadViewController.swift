@@ -11,8 +11,9 @@ import MKMagneticProgress
 import JJFloatingActionButton
 import Firebase
 import FirebaseStorage
+import SVProgressHUD
 
-class DocumentsUploadViewController: UIViewController{
+class DocumentsUploadViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,7 +21,8 @@ class DocumentsUploadViewController: UIViewController{
     @IBOutlet weak var magProgress:MKMagneticProgress!
     let actionButton = JJFloatingActionButton()
     let percent = "%"
-    
+    let uid = Auth.auth().currentUser?.uid
+    var imagePicker = UIImagePickerController()
     
     var collectionItems = ["Medical Bills", "Treatment Plan", "Prescription", "Documents by Doctor", "Pictures"]
     var progress: Int = 0
@@ -57,6 +59,29 @@ class DocumentsUploadViewController: UIViewController{
         
     }
     
+    func openiCloudDocuments(){
+        let importMenu = UIDocumentPickerViewController(documentTypes: [String("public.data")], in: .import)
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        self.present(importMenu, animated: true, completion: nil)
+        
+    }
+    
+    func setupImagePicker(){
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+ 
+
+    
+   
+    
     
     
     func configFloatingActionButton()
@@ -88,22 +113,47 @@ class DocumentsUploadViewController: UIViewController{
     magProgress.percentLabelFormat = "\(String(progressz))\(percent)"
     if progressz == 60
     {
+    uploadStatusLabel.backgroundColor = .orange
        magProgress.progressShapeColor = UIColor.orange
     
     }
     else if progressz == 80 {
-        
+        uploadStatusLabel.backgroundColor = .green
         magProgress.progressShapeColor = UIColor.green
     }
     
     else if progressz == 100 {
         
         magProgress.progressShapeColor = UIColor(red:0.10, green:0.43, blue:0.30, alpha:1.0)
+        uploadStatusLabel.backgroundColor = UIColor(red:0.10, green:0.43, blue:0.30, alpha:1.0)
+        uploadStatusLabel.textColor = .white
+        uploadStatusLabel.text = " All Documents Uploaded "
     }
     
     
     }
     
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        self.progress = self.progress + 20
+        self.updateProgessCircle(progressz: self.progress)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+        
+        let image = info
+        self.progress = self.progress + 20
+        self.updateProgessCircle(progressz: self.progress)
+        
+    }
+        
+        dismiss(animated: true) {
+            //UPLOAD
+        }
+    
+}
 }
 
 
@@ -151,8 +201,13 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                 }
                 else {
                     
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
+                    self.openiCloudDocuments()
+                    
+                    
+                    
+                    
+                    
+                    
                     self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
 
                     self.collectionView.reloadData()
@@ -171,11 +226,14 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
-                    self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
-            
-                        self.collectionView.reloadData()
+                    self.setupImagePicker()
+ 
+                    
+                            self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
+                            self.collectionView.reloadData()
+                            
+                    
+                    
                 
                 }
             }))
@@ -184,6 +242,8 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
             
             present(alert, animated: true, completion: nil)
             break
+            
+            
         case 1:
             let alert = UIAlertController(title: "Upload Documents", message: "Please upload documents", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Document", style: .default, handler: { (_) in
@@ -196,8 +256,8 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
+                    self.openiCloudDocuments()
+                    
                     self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
                  
                         self.collectionView.reloadData()
@@ -214,11 +274,12 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
-                    self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
-              
-                        self.collectionView.reloadData()
+                    
+                    self.setupImagePicker()
+                            self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
+                            self.collectionView.reloadData()
+                        
+                    
                    
                 }
             }))
@@ -239,8 +300,9 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
+                    self.openiCloudDocuments()
+                   
+                    
                     self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
           
                         self.collectionView.reloadData()
@@ -257,11 +319,13 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
-                    self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
-                   
-                        self.collectionView.reloadData()
+                    self.setupImagePicker()
+                    
+
+                            self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
+                            self.collectionView.reloadData()
+                            
+                    
                     
                 }
             }))
@@ -281,8 +345,8 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
+                    self.openiCloudDocuments()
+                    
                     self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
                
                         self.collectionView.reloadData()
@@ -299,11 +363,13 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
-                    self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
+                    self.setupImagePicker()
                     
-                        self.collectionView.reloadData()
+                    
+                            self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
+                            self.collectionView.reloadData()
+                            
+                  
                     
                 }
             }))
@@ -323,8 +389,8 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     
                 }
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
+                    self.openiCloudDocuments()
+                    
                     self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
                   
                         self.collectionView.reloadData()
@@ -340,11 +406,18 @@ extension DocumentsUploadViewController: UICollectionViewDelegate, UICollectionV
                     print("Already Uploaded")
                     
                 }
+                    
                 else {
-                    self.progress = self.progress + 20
-                    self.updateProgessCircle(progressz: self.progress)
-                    self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
-                        self.collectionView.reloadData()
+                    self.setupImagePicker()
+                    
+                    
+                            self.collectionItems[indexPath.row] = "✅" + self.collectionItems[indexPath.row]
+                            self.collectionView.reloadData()
+                            
+                            
+                   
+                    
+                    
                     
                 }
             }))

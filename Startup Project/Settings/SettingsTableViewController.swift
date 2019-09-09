@@ -31,7 +31,7 @@ class SettingsTableViewController: UITableViewController, SFSafariViewController
         super.viewDidLoad()
         
         userPhoto.layer.cornerRadius = userPhoto.frame.width / 2
-
+        userPhoto.image = UIImage(imageLiteralResourceName: "Avatar")
         print(userProfilePicUrl)
         if userProfilePicUrl != ""
         {

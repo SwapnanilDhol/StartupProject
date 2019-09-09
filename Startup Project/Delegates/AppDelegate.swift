@@ -9,6 +9,7 @@
 import UIKit
 import ApiAI
 import Firebase
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,9 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         //Configuration
+       
         
         let configuration = AIDefaultConfiguration()
-        configuration.clientAccessToken = "25374d9d9446453d85c34d091e570a20"
+        configuration.clientAccessToken = "dummyToken"
         
         let apiai = ApiAI.shared()
         apiai?.configuration = configuration

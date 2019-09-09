@@ -15,7 +15,6 @@
 		445AB2DF23200DBB00DC2610 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AB2DE23200DBB00DC2610 /* ChatTableViewCell.swift */; };
 		445AB2E1232145FA00DC2610 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AB2E0232145FA00DC2610 /* ChatViewController.swift */; };
 		445AB2E3232149AE00DC2610 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AB2E2232149AE00DC2610 /* SpeechManager.swift */; };
-		449248E923216248003F8318 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 449248E823216248003F8318 /* GoogleService-Info.plist */; };
 		44DBFD5F231D881D007EC82E /* DocumentsUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DBFD5E231D881D007EC82E /* DocumentsUploadViewController.swift */; };
 		44DBFD6F231E68F1007EC82E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DBFD6E231E68F0007EC82E /* Assets.xcassets */; };
 		44DBFD71231E7932007EC82E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DBFD70231E7932007EC82E /* SettingsViewController.swift */; };
@@ -34,7 +33,6 @@
 		445AB2E0232145FA00DC2610 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		445AB2E2232149AE00DC2610 /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		448AE20C231ECA3A0020F3DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../../../../.Trash/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		449248E823216248003F8318 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44DBFD59231D881D007EC82E /* Startup Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Startup Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DBFD5E231D881D007EC82E /* DocumentsUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsUploadViewController.swift; sourceTree = "<group>"; };
 		44DBFD6E231E68F0007EC82E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				448AE20C231ECA3A0020F3DA /* LaunchScreen.storyboard */,
 				44DBFD5E231D881D007EC82E /* DocumentsUploadViewController.swift */,
 				44DBFD6E231E68F0007EC82E /* Assets.xcassets */,
-				449248E823216248003F8318 /* GoogleService-Info.plist */,
 			);
 			path = "Startup Project";
 			sourceTree = "<group>";
@@ -216,7 +213,6 @@
 			files = (
 				440D027F231EC95200C6ECA4 /* Main.storyboard in Resources */,
 				44DBFD6F231E68F1007EC82E /* Assets.xcassets in Resources */,
-				449248E923216248003F8318 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +409,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fastclaim;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.swapnanildhol.startup-project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -432,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fastclaim;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.swapnanildhol.startup-project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
